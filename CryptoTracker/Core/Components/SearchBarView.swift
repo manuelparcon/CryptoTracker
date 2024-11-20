@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+ 
 // Reusable search bar
 struct SearchBarView: View {
 
