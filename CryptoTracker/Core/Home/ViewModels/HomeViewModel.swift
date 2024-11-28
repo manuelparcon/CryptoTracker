@@ -69,6 +69,12 @@ class HomeViewModel: ObservableObject {
         portfolioDataService.updatePortfolio(coin: coin, amount: amount)
     }
     
+    // Change prices from the API
+    func reloadData() {
+        coinDataService.getCoins()
+        marketDataService.getData()
+    }
+    
     private func filterCoins(text: String, coins: [CoinModel]) -> [CoinModel] {
         guard !text.isEmpty else {
             return coins
@@ -133,4 +139,5 @@ class HomeViewModel: ObservableObject {
         ])
         return stats
     }
+    
 }
