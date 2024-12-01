@@ -73,6 +73,7 @@ class HomeViewModel: ObservableObject {
     func reloadData() {
         coinDataService.getCoins()
         marketDataService.getData()
+        HapticManager.notification(type: .success)
     }
     
     private func filterCoins(text: String, coins: [CoinModel]) -> [CoinModel] {
