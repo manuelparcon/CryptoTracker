@@ -54,7 +54,7 @@ extension PortfolioView {
     private var coinLogoList: some View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 10) {
-                ForEach(vm.searchText.isEmpty ? vm.portfolioCoins : vm.allCoins) { coin in
+                ForEach(vm.searchText.isEmpty ? vm.allCoins : vm.portfolioCoins) { coin in
                     CoinLogoView(coin: coin)
                         .frame(width: 75)
                         .padding(4)
