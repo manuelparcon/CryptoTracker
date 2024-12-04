@@ -12,6 +12,7 @@ struct HomeView: View {
     @EnvironmentObject private var vm: HomeViewModel
     @State private var showPortfolio: Bool = false // Animate right
     @State private var showPortfolioView: Bool = false // New sheet
+    @State private var animateSortChevron: Bool = false
     
     var body: some View {
         ZStack {
@@ -112,19 +113,85 @@ extension HomeView {
     
     private var columnTitles: some View {
         HStack {
-            Text("Coin")
-                .frame(maxWidth: .infinity, alignment: .leading)
-            if showPortfolio {
-                Text("Holdings")
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-            } else {
-                Text("Holdings")
-                    .frame(maxWidth: .infinity, alignment: .trailing)
-                    .hidden()
-                    .accessibilityHidden(true)
+            HStack(spacing: 4) {
+                Text("Coin")
+                Image(systemName: "chevron.down")
+                    .opacity((vm.sortOption == .rank || vm.sortOption == .rankReversed) ? 1.0 : 0.0)
+                    .rotationEffect(Angle(degrees: vm.sortOption == .rank ? 0 : 180))
             }
-            Text("Price")
-                .frame(maxWidth: .infinity, alignment: .trailing)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .onTapGesture {
+                withAnimation(.default) {
+                    vm.sortOption = vm.sortOption == .rank ? .rankReversed : .rank
+                    
+                    // Same as code above
+    //                if vm.sortOption == .rank {
+    //                    vm.sortOption = .rankReversed
+    //                } else {
+    //                    vm.sortOption == .rank
+    //                }
+                }
+            }
+//            if showPortfolio {
+//                HStack(spacing: 4) {
+//                    Text("Holdings")
+//                    Image(systemName: "chevron.down")
+//                        .opacity((vm.sortOption == .holdings || vm.sortOption == .holdingsReversed) ? 1.0 : 0.0)
+//                        .rotationEffect(Angle(degrees: vm.sortOption == .holdings ? 0 : 180))
+//                        .animation(.default, value: animateSortChevron)
+//                }
+//                .frame(maxWidth: .infinity, alignment: .trailing)
+//                .animation(nil, value: showPortfolio)
+//                .onTapGesture {
+//                    animateSortChevron.toggle()
+//                    vm.sortOption = vm.sortOption == .holdings ? .holdingsReversed : .holdings
+//                }
+//
+//            } else {
+//                HStack(spacing: 4) {
+//                    Text("Holdings")
+//                    Image(systemName: "chevron.down")
+//                        .opacity((vm.sortOption == .holdings || vm.sortOption == .holdingsReversed) ? 1.0 : 0.0)
+//                        .rotationEffect(Angle(degrees: vm.sortOption == .holdings ? 0 : 180))
+//                        .animation(.default, value: animateSortChevron)
+//                }
+//                .frame(maxWidth: .infinity, alignment: .trailing)
+//                .hidden()
+//                .animation(nil, value: showPortfolio)
+//                .accessibilityHidden(true)
+//                .onTapGesture {
+//                    animateSortChevron.toggle()
+//                    vm.sortOption = vm.sortOption == .holdings ? .holdingsReversed : .holdings
+//                }
+//            }
+            HStack(spacing: 4) {
+                Text("Holdings")
+                Image(systemName: "chevron.down")
+                    .opacity((vm.sortOption == .holdings || vm.sortOption == .holdingsReversed) ? 1.0 : 0.0)
+                    .rotationEffect(Angle(degrees: vm.sortOption == .holdings ? 0 : 180))
+                    .animation(.default, value: animateSortChevron)
+            }
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            .opacity(showPortfolio ? 1.0 : 0.0)
+            .animation(nil, value: showPortfolio)
+            .accessibilityHidden(showPortfolio ? false: true)
+            .onTapGesture {
+                animateSortChevron.toggle()
+                vm.sortOption = vm.sortOption == .holdings ? .holdingsReversed : .holdings
+            }
+            HStack(spacing: 4) {
+                Text("Price")
+                Image(systemName: "chevron.down")
+                    .opacity((vm.sortOption == .price || vm.sortOption == .priceReversed) ? 1.0 : 0.0)
+                    .rotationEffect(Angle(degrees: vm.sortOption == .price ? 0 : 180))
+
+            }
+            .frame(maxWidth: .infinity, alignment: .center)
+            .onTapGesture {
+                withAnimation(.default) {
+                    vm.sortOption = vm.sortOption == .price ? .priceReversed : .price
+                }
+            }
         }
         .frame(maxWidth: .infinity)
         .font(.caption)
