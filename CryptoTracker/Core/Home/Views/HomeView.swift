@@ -123,7 +123,6 @@ extension HomeView {
             .onTapGesture {
                 withAnimation(.default) {
                     vm.sortOption = vm.sortOption == .rank ? .rankReversed : .rank
-                    
                     // Same as code above
     //                if vm.sortOption == .rank {
     //                    vm.sortOption = .rankReversed
@@ -132,38 +131,6 @@ extension HomeView {
     //                }
                 }
             }
-//            if showPortfolio {
-//                HStack(spacing: 4) {
-//                    Text("Holdings")
-//                    Image(systemName: "chevron.down")
-//                        .opacity((vm.sortOption == .holdings || vm.sortOption == .holdingsReversed) ? 1.0 : 0.0)
-//                        .rotationEffect(Angle(degrees: vm.sortOption == .holdings ? 0 : 180))
-//                        .animation(.default, value: animateSortChevron)
-//                }
-//                .frame(maxWidth: .infinity, alignment: .trailing)
-//                .animation(nil, value: showPortfolio)
-//                .onTapGesture {
-//                    animateSortChevron.toggle()
-//                    vm.sortOption = vm.sortOption == .holdings ? .holdingsReversed : .holdings
-//                }
-//
-//            } else {
-//                HStack(spacing: 4) {
-//                    Text("Holdings")
-//                    Image(systemName: "chevron.down")
-//                        .opacity((vm.sortOption == .holdings || vm.sortOption == .holdingsReversed) ? 1.0 : 0.0)
-//                        .rotationEffect(Angle(degrees: vm.sortOption == .holdings ? 0 : 180))
-//                        .animation(.default, value: animateSortChevron)
-//                }
-//                .frame(maxWidth: .infinity, alignment: .trailing)
-//                .hidden()
-//                .animation(nil, value: showPortfolio)
-//                .accessibilityHidden(true)
-//                .onTapGesture {
-//                    animateSortChevron.toggle()
-//                    vm.sortOption = vm.sortOption == .holdings ? .holdingsReversed : .holdings
-//                }
-//            }
             HStack(spacing: 4) {
                 Text("Holdings")
                 Image(systemName: "chevron.down")
@@ -186,7 +153,7 @@ extension HomeView {
                     .rotationEffect(Angle(degrees: vm.sortOption == .price ? 0 : 180))
 
             }
-            .frame(maxWidth: .infinity, alignment: .center)
+            .frame(maxWidth: .infinity, alignment: .trailing)
             .onTapGesture {
                 withAnimation(.default) {
                     vm.sortOption = vm.sortOption == .price ? .priceReversed : .price
