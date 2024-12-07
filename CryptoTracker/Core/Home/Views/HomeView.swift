@@ -27,13 +27,9 @@ struct HomeView: View {
             // Content layer
             VStack {
                 homeHeader
-                let _ = print("showPortfolio 1: \(showPortfolio)")
                 HomeStatsView(showPortfolio: $showPortfolio)
-                let _ = print("showPortfolio 2: \(showPortfolio)")
                 SearchBarView(searchText: $vm.searchText)
-                let _ = print("showPortfolio 3: \(showPortfolio)")
                 columnTitles
-                let _ = print("showPortfolio 4: \(showPortfolio)")
                 
                 if !showPortfolio {
                     allCoinsList
