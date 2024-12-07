@@ -14,6 +14,7 @@ struct HomeStatsView: View {
     @Binding var showPortfolio: Bool
     
     var body: some View {
+        
         HStack {
             ForEach(vm.statistics) { stat in
                 StatisticView(stat: stat)

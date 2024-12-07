@@ -52,7 +52,7 @@ import Foundation
  */
 
 
-struct CoinModel: Identifiable, Codable {
+struct CoinModel: Identifiable, Codable, Hashable, Equatable {
     
     let id, symbol, name: String
     let image: String
@@ -105,6 +105,10 @@ struct CoinModel: Identifiable, Codable {
         return CoinModel(id: id, symbol: symbol, name: name, image: image, currentPrice: currentPrice, marketCap: marketCap, marketCapRank: marketCapRank, fullyDilutedValuation: fullyDilutedValuation, totalVolume: totalVolume, high24H: high24H, low24H: low24H, priceChange24H: priceChange24H, priceChangePercentage24H: priceChangePercentage24H, marketCapChange24H: marketCapChange24H, marketCapChangePercentage24H: marketCapChangePercentage24H, circulatingSupply: circulatingSupply, totalSupply: totalSupply, maxSupply: maxSupply, ath: ath, athChangePercentage: athChangePercentage, athDate: athDate, atl: atl, atlChangePercentage: atlChangePercentage, atlDate: atlDate, lastUpdated: lastUpdated, sparklineIn7D: sparklineIn7D, priceChangePercentage24HInCurrency: priceChangePercentage24HInCurrency, currentHoldings: amount)
     }
     
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(name)
+    }
+    
     var currentHoldingsValue: Double {
         return (currentHoldings ?? 0) * currentPrice
     }
@@ -114,7 +118,7 @@ struct CoinModel: Identifiable, Codable {
     }
 }
     
-struct SparklineIn7D: Codable {
+struct SparklineIn7D: Codable, Equatable {
     let price: [Double]?
 }
 

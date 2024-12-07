@@ -17,10 +17,6 @@ struct CircleButtonAnimationView: View {
             .scale(animate ? 1.0 : 0.0)
             .opacity(animate ? 0.0 : 1.0)
             .animation(animate ? Animation.easeInOut(duration: 1.0) : .none, value: animate) // Animate only in 1 direction (when animate turns from false to true)
-            .onAppear {
-                animate.toggle()
-            }
-        
     }
 }
 

@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @EnvironmentObject private var vm: HomeViewModel
-    @State private var showPortfolio: Bool = false // Animate right
+    @State private var showPortfolio: Bool = false
     @State private var showPortfolioView: Bool = false // New sheet
     @State private var animateSortChevron: Bool = false
     
@@ -27,19 +27,24 @@ struct HomeView: View {
             // Content layer
             VStack {
                 homeHeader
+                let _ = print("showPortfolio 1: \(showPortfolio)")
                 HomeStatsView(showPortfolio: $showPortfolio)
+                let _ = print("showPortfolio 2: \(showPortfolio)")
                 SearchBarView(searchText: $vm.searchText)
-                
+                let _ = print("showPortfolio 3: \(showPortfolio)")
                 columnTitles
+                let _ = print("showPortfolio 4: \(showPortfolio)")
                 
                 if !showPortfolio {
                     allCoinsList
                         .transition(.move(edge: .leading))
                 }
+                
                 if showPortfolio {
                     portfolioCoinsList
                         .transition(.move(edge: .trailing))
                 }
+                
                 Spacer(minLength: 0)
             }
         }
@@ -85,23 +90,26 @@ extension HomeView {
                 }
         }
         .padding(.horizontal)
-        
     }
     
     private var allCoinsList: some View {
-        List {
-            ForEach(vm.allCoins) { coin in
-                NavigationLink {
-                    DetailView(coin: coin)
-                } label: {
-                    CoinRowView(coin: coin, showHoldingsColumn: false)
-                        .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
+        
+        NavigationStack {
+            List {
+                ForEach(vm.allCoins) { coin in
+                    NavigationLink(value: coin) {
+                        CoinRowView(coin: coin, showHoldingsColumn: false)
+                            .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
+                    }
                 }
             }
-        }
-        .listStyle(PlainListStyle())
-        .refreshable {
-            vm.reloadData()
+            .navigationDestination(for: CoinModel.self, destination: { coin in
+                DetailView(coin: coin)
+            })
+            .listStyle(PlainListStyle())
+            .refreshable {
+                vm.reloadData()
+            }
         }
     }
     
@@ -145,7 +153,7 @@ extension HomeView {
             .frame(maxWidth: .infinity, alignment: .trailing)
             .opacity(showPortfolio ? 1.0 : 0.0)
             .animation(nil, value: showPortfolio)
-            .accessibilityHidden(showPortfolio ? false: true)
+            .accessibilityHidden(showPortfolio ? false : true)
             .onTapGesture {
                 animateSortChevron.toggle()
                 vm.sortOption = vm.sortOption == .holdings ? .holdingsReversed : .holdings
