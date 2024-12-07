@@ -54,23 +54,45 @@ extension PortfolioView {
     private var coinLogoList: some View {
         ScrollView(.horizontal) {
             LazyHStack(spacing: 10) {
-                ForEach(vm.searchText.isEmpty ? vm.allCoins : vm.portfolioCoins) { coin in
-                    CoinLogoView(coin: coin)
-                        .frame(width: 75)
-                        .padding(4)
-                        .onTapGesture(perform: {
-                            withAnimation(.easeIn) {
-                                updateSelectedCoin(coin: coin)
-                            }
-                        })
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(
-                                    selectedCoin?.id == coin.id ? Color.theme.green : Color.clear,
-                                    lineWidth: 1
-                                )
-                        )
+                if vm.portfolioCoins.isEmpty {
+                    ForEach(vm.allCoins) { coin in
+                        CoinLogoView(coin: coin)
+                            .frame(width: 75)
+                            .padding(4)
+                            .onTapGesture(perform: {
+                                withAnimation(.easeIn) {
+                                    updateSelectedCoin(coin: coin)
+                                }
+                            })
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(
+                                        selectedCoin?.id == coin.id ? Color.theme.green : Color.clear,
+                                        lineWidth: 1
+                                    )
+                            )
+                    }
+                } else {
+                    ForEach(vm.searchText.isEmpty ? vm.portfolioCoins : vm.allCoins) { coin in
+                        CoinLogoView(coin: coin)
+                            .frame(width: 75)
+                            .padding(4)
+                            .onTapGesture(perform: {
+                                withAnimation(.easeIn) {
+                                    updateSelectedCoin(coin: coin)
+                                }
+                            })
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(
+                                        selectedCoin?.id == coin.id ? Color.theme.green : Color.clear,
+                                        lineWidth: 1
+                                    )
+                            )
+                    }
+
                 }
+                
             }
             .padding(.vertical, 4)
             .padding(.leading)
