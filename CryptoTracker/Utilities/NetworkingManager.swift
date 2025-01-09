@@ -30,9 +30,9 @@ class NetworkingManager {
     // We use static because we will always use the same function. Without it, we'd have to initialize a URL when creating an instance of NetworkingManager.
     static func download(url: URL) -> AnyPublisher<Data, any Error> {
         return URLSession.shared.dataTaskPublisher(for: url)
-            .subscribe(on: DispatchQueue.global(qos: .default)) // Subscribe on background thread
+//            .subscribe(on: DispatchQueue.global(qos: .default)) // Subscribe on background thread. Not actually needed because it's automatic on URLSession.shared.dataTaskPublisher
             .tryMap({ try handleURLResponse(output: $0, url: url) }) // try to Map on URL response to check if it's valid or not
-            .receive(on: DispatchQueue.main) // Receive on main thread
+            .retry(3) // Try 3 times if URL response fails
             .eraseToAnyPublisher() // Wraps the publisher to an AnyPublisher type. The URLSession above is a deep nested publisher, so this will simplify and protect that specific type.
     }
     

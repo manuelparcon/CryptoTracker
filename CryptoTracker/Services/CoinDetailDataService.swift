@@ -31,6 +31,7 @@ class CoinDetailDataService {
         // Clean up code by creating a new file for generic code that we can reuse (NetworkingManager)
         coinDetailSubscription = NetworkingManager.download(url: url)
             .decode(type: CoinDetailModel.self, decoder: JSONDecoder()) // Decode into a coin detail model
+            .receive(on: DispatchQueue.main) // Receive on main thread
             .sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] (returnedCoinDetails) in
                 self?.coinDetails = returnedCoinDetails
                 self?.coinDetailSubscription?.cancel()
