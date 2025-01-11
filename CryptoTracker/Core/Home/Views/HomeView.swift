@@ -68,7 +68,6 @@ struct HomeView: View {
 extension HomeView {
     
     private var homeHeader: some View {
-        
         HStack {
             CircleButtonView(iconName: showPortfolio ? "plus" : "info")
                 .animation(.none, value: showPortfolio)
@@ -101,7 +100,6 @@ extension HomeView {
     }
     
     private var allCoinsList: some View {
-        
         NavigationStack {
             List {
                 ForEach(vm.allCoins) { coin in
