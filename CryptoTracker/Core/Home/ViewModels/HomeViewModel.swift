@@ -96,7 +96,6 @@ class HomeViewModel: ObservableObject {
         return coins.filter { (coin) -> Bool in
             return coin.name.lowercased().contains(lowercasedText) || coin .symbol.lowercased().contains(lowercasedText) || coin.id.lowercased().contains(lowercasedText)
         }
-
     }
     
     private func sortCoins(sort: SortOption, coins: inout [CoinModel]) {
@@ -136,7 +135,6 @@ class HomeViewModel: ObservableObject {
                 }
                 return coin.updateHoldings(amount: entity.amount)
             }
-
     }
     
     private func mapGlobalMarketData(marketDataModel: MarketDataModel?, portfolioCoins: [CoinModel]) -> [StatisticModel] {
@@ -179,5 +177,4 @@ class HomeViewModel: ObservableObject {
         ])
         return stats
     }
-    
 }

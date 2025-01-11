@@ -15,7 +15,6 @@ class DetailViewModel:ObservableObject {
     @Published var coinDescription: String? = nil
     @Published var websiteURL: String? = nil
     @Published var redditURL: String? = nil
-
     
     @Published var coin: CoinModel
     private let coinDetailService: CoinDetailDataService // We will initialize coinDetailService in init so we can pass CoinModel so we can add coin
@@ -28,7 +27,6 @@ class DetailViewModel:ObservableObject {
     }
     
     private func addSubscribers() {
-        
         coinDetailService.$coinDetails // Subscribe to coinDetails
             .combineLatest($coin)
             .map(mapDataToStatistics)
@@ -48,7 +46,6 @@ class DetailViewModel:ObservableObject {
     }
     
     private func mapDataToStatistics(coinDetailModel: CoinDetailModel?, coinModel: CoinModel) -> (overview: [StatisticModel], additional: [StatisticModel]) {
-        
         let overviewArray = createOverviewArray(coinModel: coinModel)
         let additionalArray = createAdditionalArray(coinDetailModel: coinDetailModel, coinModel: coinModel)
         

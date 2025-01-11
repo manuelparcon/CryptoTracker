@@ -14,16 +14,13 @@ struct ChartView: View {
         
     let coinData: [Double]
     var data: [PriceOverTime] = []
-    
     let yValues: [Double]
     let minY: Double
     let maxY: Double
-    
     let startingDate: Date
     let endingDate: Date
-    
     let lineColor: Color
-    
+
     init(coin: CoinModel) {
         coinData = coin.sparklineIn7D?.price ?? []
         

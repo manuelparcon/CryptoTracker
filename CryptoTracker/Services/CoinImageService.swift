@@ -54,6 +54,5 @@ class CoinImageService {
                 self.imageSubscription?.cancel()
                 self.fileManager.saveImage(image: downloadedImage, imageName: self.imageName, folderName: self.folderName)
             })
-
     }
 }

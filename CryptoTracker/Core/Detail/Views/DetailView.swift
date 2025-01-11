@@ -7,23 +7,11 @@
 
 import SwiftUI
 
-//struct DetailLoadingView: View {
-//    
-//    @Binding var coin: CoinModel?
-//    
-//    var body: some View {
-//        ZStack {
-//            if let coin = coin {
-//                DetailView(coin: coin)
-//            }
-//        }
-//    }
-//}
-
 struct DetailView: View {
     
     @StateObject var vm: DetailViewModel // Initialize vm in init since DataViewModel needs coin
     @State private var showFullDescription: Bool = false
+    
     private let columns: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -74,7 +62,6 @@ extension DetailView {
             CoinImageView(coin: vm.coin)
                 .frame(width: 25, height: 25)
         }
-
     }
     
     private var overviewTitle: some View {
@@ -117,7 +104,6 @@ extension DetailView {
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
-
     }
     
     private var websiteSection: some View {
@@ -133,7 +119,6 @@ extension DetailView {
         .tint(Color.blue)
         .frame(maxWidth: .infinity, alignment: .leading)
         .font(.headline)
-
     }
     
     private var overviewGrid: some View {
@@ -159,5 +144,4 @@ extension DetailView {
                 }
             }
     }
-    
 }

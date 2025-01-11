@@ -26,5 +26,4 @@ extension Date {
     func asShortDateString() -> String {
         return shortFormatter.string(from: self)
     }
-    
 }

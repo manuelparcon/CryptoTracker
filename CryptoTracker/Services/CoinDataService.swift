@@ -33,6 +33,5 @@ class CoinDataService {
                 self?.coinSubscription?.cancel()
             })
 //            .store(in: &cancellables)
-
     }
 }

@@ -67,7 +67,4 @@ class LocalFileManager {
         guard let folderURL = getURLForFolder(folderName: folderName) else { return nil }
         return folderURL.appending(path: imageName + ".png", directoryHint: .notDirectory)
     }
-    
-    // Get images back from file manager
-    
 }
