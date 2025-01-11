@@ -41,7 +41,6 @@ struct SettingsView: View {
 }
 
 extension SettingsView {
-    
     private var swiftfulthinkingSection: some View {
         Section {
             VStack(alignment: .leading) {
