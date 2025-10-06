@@ -3,14 +3,14 @@
 ## Overview
 This practice project allows users to track real-time cryptocurrency data fetched from an external API and to manage a simulated investment portfolio. The primary focus of this project is implementing a clean, scalable architecture and mastering the asynchronous data flow, data persistence, and multi-threading essential for production applications.
 
-> 💡 **Built to showcase:** Combine, Networking, CoreData, Observation (migrated from ObservableObject), Multi-threading, MVVM.
+> 💡 **Built to showcase:** Combine, Networking, CoreData, Observation, Multi-threading, MVVM.
 
 ## Tech Stack
 
 | Category | Technologies |
 |:---|:---|
 | Language | Swift |
-| Framework | SwiftUI, Combine, CoreData, Observation, ObservableObject(refactored out), FileManager |
+| Framework | SwiftUI, Combine, CoreData, Observation, ObservableObject, FileManager |
 | Architecture | MVVM |
 | Tools | Xcode, GitHub, GitFork |
 
@@ -36,6 +36,7 @@ This practice project allows users to track real-time cryptocurrency data fetche
 * **Data Persistence:** Use of CoreData to persist API and user data and FileManager to persist images.
 * **Scalable Architecture:** Applied MVVM and service layers to handle data, resulting in ViewModels that may easily be testable and Views that remain simple and focused on UI logic.
 * **Custom UI Development:** Developed custom SwiftUI views (e.g. custom tab bar, reusable card components).
+* **Migrating to Observation:** Refactored code from ObservableObject to Observation.
 * **Performance Optimization:** Use of LazyHStack, LazyGrid, and a custom NavigationLink for lazy loading.
 
 ## References/Attributions
