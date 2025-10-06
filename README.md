@@ -24,10 +24,10 @@ This practice project allows users to track real-time cryptocurrency data fetche
 ## Screenshots
 
 <div align="left" style="display: flex; flex-wrap: wrap; justify-content: center;">
-  <img src="https://github.com/user-attachments/assets/f7a839b5-5463-42b4-a015-6b775b93651f" width="230" style="margin: 10px;" />
-  <img src="https://github.com/user-attachments/assets/4cff5a51-5cbb-492f-b592-f23844fa30df" width="230" style="margin: 10px;" />
-  <img src="https://github.com/user-attachments/assets/cfc9ea14-83d3-471b-8217-19c0badf65b0" width="230" style="margin: 10px;" />
-  <img src="https://github.com/user-attachments/assets/2249bdec-7812-4475-b163-fb1741e4ce9d" width="230" style="margin: 10px;" />
+  <img src="https://github.com/user-attachments/assets/f7a839b5-5463-42b4-a015-6b775b93651f" width="200" style="margin: 10px;" />
+  <img src="https://github.com/user-attachments/assets/4cff5a51-5cbb-492f-b592-f23844fa30df" width="200" style="margin: 10px;" />
+  <img src="https://github.com/user-attachments/assets/cfc9ea14-83d3-471b-8217-19c0badf65b0" width="200" style="margin: 10px;" />
+  <img src="https://github.com/user-attachments/assets/2249bdec-7812-4475-b163-fb1741e4ce9d" width="200" style="margin: 10px;" />
 </div>
 
 ## Lessons Learned
