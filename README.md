@@ -38,6 +38,6 @@ This practice project allows users to track real-time cryptocurrency data fetche
 * **Custom UI Development:** Developed custom SwiftUI views (e.g. custom tab bar, reusable card components).
 * **Performance Optimization:** Use of LazyHStack, LazyGrid, and a custom NavigationLink for lazy loading.
 
-## 📚 References/Attributions
+## References/Attributions
 * Developed by following the [SwiftUI Crypto App playlist](https://www.youtube.com/playlist?list=PLwvDm4Vfkdphbc3bgy_LpLRQ9DDfFGcFu) by Swiftful Thinking.
 * Powered by [CoinGecko API](https://www.coingecko.com/en/api/).
