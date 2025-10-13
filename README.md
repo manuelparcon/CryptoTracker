@@ -10,7 +10,7 @@ This practice project allows users to track real-time cryptocurrency data fetche
 | Category | Technologies |
 |:---|:---|
 | Language | Swift |
-| Framework | SwiftUI, Combine, CoreData, Observation, ObservableObject, FileManager |
+| Framework | SwiftUI, Combine, CoreData, Observation, ObservableObject, FileManager, Swift Charts |
 | Architecture | MVVM |
 | Tools | Xcode, GitHub, GitKraken |
 
